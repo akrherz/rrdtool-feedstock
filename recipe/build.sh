@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
+set -eo pipefail
+
+./bootstrap
+
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
-set -eo pipefail
+
+CFLAGS="${CFLAGS} -I${PREFIX}/include/pango-1.0 -I${PREFIX}/include/harfbuzz -I${PREFIX}/include/cairo"
 
 ./configure \
     "--prefix=${PREFIX}" \
@@ -11,7 +16,7 @@ set -eo pipefail
     --disable-ruby \
     --disable-lua \
     --disable-tcl \
-    --disable-docs
+    --disable-docs || (cat config.log && exit 1)
 
 make "-j${CPU_COUNT}"
 

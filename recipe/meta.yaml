@@ -1,5 +1,5 @@
 {% set name = "rrdtool" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/oetiker/rrdtool-1.x/archive/v{{ version }}.tar.gz
-  sha256: 88a59a645161d0cfd1af898459fc033af975816278cf132cc66bf0dd8d0559cc
+  sha256: 405f4ce365e2e37bdeff9bbb844cbedf9b36dde7344b31449e369315a3df5ef0
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   # Fails with "Bad CPU type in executable" when cross-compiling
   skip_compile_pyc:   # [osx and arm64]
@@ -20,6 +20,10 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - autoconf
+    - automake
+    - harfbuzz
     - make
     - libtool
     - pkg-config
