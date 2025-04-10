@@ -3,8 +3,7 @@
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
-which pkg-config
+ls $BUILD_PREFIX/lib/pkgconfig/
 
 ./configure \
     "--prefix=${PREFIX}" \
