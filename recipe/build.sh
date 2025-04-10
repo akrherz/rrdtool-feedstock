@@ -3,6 +3,9 @@
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_PREFIX/lib/pkgconfig"
+which pkg-config
+
 ./configure \
     "--prefix=${PREFIX}" \
     "--with-systemdsystemunitdir=${PREFIX}/lib/systemd/system" \
