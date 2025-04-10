@@ -3,8 +3,10 @@
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
-ls $BUILD_PREFIX/lib/pkgconfig/
+export PKG_CONFIG_PATH="$BUILD_PREFIX/lib/pkgconfig/"
 
+pkg-config --libs pangocairo
+echo '-----configure'
 ./configure \
     "--prefix=${PREFIX}" \
     "--with-systemdsystemunitdir=${PREFIX}/lib/systemd/system" \

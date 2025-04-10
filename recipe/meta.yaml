@@ -26,7 +26,6 @@ requirements:
     - pkg-config
     # Required for "make check"
     - coreutils
-    - pango
     - bc
   host:
     - cairo
