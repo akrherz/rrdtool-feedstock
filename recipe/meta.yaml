@@ -10,7 +10,7 @@ source:
   sha256: 88a59a645161d0cfd1af898459fc033af975816278cf132cc66bf0dd8d0559cc
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   # Fails with "Bad CPU type in executable" when cross-compiling
   skip_compile_pyc:   # [osx and arm64]
