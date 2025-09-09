@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
+#cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
+CFLAGS="${CFLAGS} -I${PREFIX}/include/pango-1.0"
+
 ./configure \
-    "--prefix=${BUILD_PREFIX}" \
-    "--with-systemdsystemunitdir=${BUILD_PREFIX}/lib/systemd/system" \
+    "--prefix=${PREFIX}" \
+    "--with-systemdsystemunitdir=${PREFIX}/lib/systemd/system" \
     --disable-python \
     --disable-perl \
     --disable-ruby \
