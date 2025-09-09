@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/oetiker/rrdtool-1.x/archive/v{{ version }}.tar.gz
   sha256: 405f4ce365e2e37bdeff9bbb844cbedf9b36dde7344b31449e369315a3df5ef0
+  patches:
+    - cloexec.patch
 
 build:
   number: 0
