@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Get an updated config.sub and config.guess
-#cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
-CFLAGS="${CFLAGS} -I${PREFIX}/include/pango-1.0"
+CFLAGS="${CFLAGS} -I${PREFIX}/include/pango-1.0 -I${PREFIX}/include/harfbuzz"
 
 ./configure \
     "--prefix=${PREFIX}" \
