@@ -3,19 +3,15 @@
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./conftools
 set -eo pipefail
 
-export PKG_CONFIG_PATH="$BUILD_PREFIX/lib/pkgconfig/"
-
-pkg-config --libs pangocairo
-echo '-----configure'
 ./configure \
-    "--prefix=${PREFIX}" \
-    "--with-systemdsystemunitdir=${PREFIX}/lib/systemd/system" \
+    "--prefix=${BUILD_PREFIX}" \
+    "--with-systemdsystemunitdir=${BUILD_PREFIX}/lib/systemd/system" \
     --disable-python \
     --disable-perl \
     --disable-ruby \
     --disable-lua \
     --disable-tcl \
-    --disable-docs
+    --disable-docs || (cat config.log && exit 1)
 
 make "-j${CPU_COUNT}"
 
